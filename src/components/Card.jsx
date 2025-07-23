@@ -17,7 +17,7 @@ const Card = ({ realm, isActive }) => {
               .play()
               .catch((e) => console.log("Audio play failed:", e));
           }
-        }, 2000);
+        }, 3000);
         return () => clearTimeout(photoTimer);
       }, 1000);
       return () => clearTimeout(timer);
@@ -44,7 +44,7 @@ const Card = ({ realm, isActive }) => {
           <motion.img
             src={realm.image}
             alt={realm.title}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-contain"
             initial={{ opacity: 0 }}
             animate={{ opacity: showPhoto ? 0 : 1 }}
             transition={{ duration: 1 }}
@@ -55,9 +55,9 @@ const Card = ({ realm, isActive }) => {
             animate={{ opacity: showPhoto ? 1 : 0 }}
             transition={{ duration: 1 }}
           >
-            <h3 className="text-3xl font-bold mb-2">{realm.title}</h3>
-            <p>{realm.caption || realm.message}</p>
-            {realm.audio && <audio ref={audioRef} src={realm.audio} />}
+            <h3 className="text-5xl font-bold mb-4">{realm.title}</h3>
+            <p className="text-2xl mb-4">{realm.caption || realm.message}</p>
+            {realm.audio && <audio ref={audioRef} src={realm.audio} controls />}
           </motion.div>
         </>
       )}

@@ -14,12 +14,15 @@ export default function HeaderText({ onContinue, isFloating, showCarousel }) {
   return (
     <div
       className={`absolute inset-0 flex flex-col items-center justify-center z-10 text-center text-white transition-all duration-1000 ${
-        isFloating ? "top-[-20%]" : "top-0"
-      } ${showCarousel ? "opacity-0" : "opacity-100"}`}
+        isFloating ? "-translate-y-full" : "translate-y-0"
+      }`}
     >
       <motion.h1
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
+        animate={{
+          opacity: showCarousel ? 0 : 1,
+          scale: isFloating ? 0.8 : 1,
+        }}
         transition={{ duration: 1.5 }}
         className="text-5xl md:text-7xl font-bold"
         style={{ fontFamily: "Lobster" }}
