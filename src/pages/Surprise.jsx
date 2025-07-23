@@ -1,29 +1,32 @@
-import { useParams } from "react-router-dom";
-import realms from "../realms/Realmsdata";
+import React from "react";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
 
-const RealmReveal = () => {
-  const { number } = useParams();
-  const realm = realms.find((r) => r.number === parseInt(number));
-
-  if (!realm) return <div className="text-white p-4">Realm not found!</div>;
+const Surprise = () => {
+  const { width, height } = useWindowSize();
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white p-4">
-      {realm.isSpecial && <Confetti />}
-      <h1 className="text-4xl font-bold mb-4">
-        {realm.isSpecial
-          ? "🎉 Happy Birthday, Love! 🎉"
-          : `Realm ${realm.number}`}
-      </h1>
-      <img
-        src={realm.image}
-        alt={`Realm ${realm.number}`}
-        className="w-80 mb-4 rounded-xl"
-      />
-      <p className="text-xl mb-4">{realm.message}</p>
-      <audio controls src={realm.audio} />
+    <div className="relative w-full h-screen flex flex-col items-center justify-center bg-black text-white overflow-hidden">
+      <Confetti width={width} height={height} />
+      <div className="text-center z-10">
+        <h1 className="text-5xl font-bold mb-4 animate-bounce">
+          Happy 23rd Birthday, BooBoo! 🎈
+        </h1>
+        <p className="text-2xl mb-8">Here's a special message just for you.</p>
+        {/* You can replace this with an actual video */}
+        <div className="w-full max-w-2xl mx-auto bg-gray-800 rounded-lg shadow-lg p-4">
+          <video
+            src="/assets/video1.mp4" // Placeholder for the final video
+            controls
+            autoPlay
+            className="w-full rounded"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default RealmReveal;
+export default Surprise;

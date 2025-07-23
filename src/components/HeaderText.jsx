@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
-export default function HeaderText({ onContinue }) {
+export default function HeaderText({ onContinue, isFloating, showCarousel }) {
   const [showArrow, setShowArrow] = useState(false);
 
   useEffect(() => {
@@ -12,7 +12,11 @@ export default function HeaderText({ onContinue }) {
   }, []);
 
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center text-black">
+    <div
+      className={`absolute inset-0 flex flex-col items-center justify-center z-10 text-center text-white transition-all duration-1000 ${
+        isFloating ? "top-[-20%]" : "top-0"
+      } ${showCarousel ? "opacity-0" : "opacity-100"}`}
+    >
       <motion.h1
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -20,13 +24,13 @@ export default function HeaderText({ onContinue }) {
         className="text-5xl md:text-7xl font-bold"
         style={{ fontFamily: "Lobster" }}
       >
-        BooBoo's 23 Phases
+        BooBoo's 23 Phases 🎈
       </motion.h1>
 
-      {showArrow && (
+      {showArrow && !isFloating && (
         <motion.button
           onClick={onContinue}
-          className="mt-8 text-black animate-bounce"
+          className="mt-8 text-white animate-bounce"
         >
           <ChevronRight size={48} />
         </motion.button>
