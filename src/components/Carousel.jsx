@@ -11,10 +11,8 @@ const Carousel = () => {
   const dragControls = useRef();
 
   const handleNext = () => {
-    if (realms[activeIndex].isSpecial) {
-      navigate("/surprise");
-    } else {
-      setActiveIndex((prev) => (prev + 1) % realms.length);
+    if (activeIndex < realms.length - 1) {
+      setActiveIndex((prev) => prev + 1);
     }
   };
 
@@ -38,6 +36,11 @@ const Carousel = () => {
             <div
               key={realm.number}
               className="flex-shrink-0 w-full h-full px-8"
+              onClick={() => {
+                if (realm.isSpecial) {
+                  navigate("/surprise");
+                }
+              }}
             >
               <Card realm={realm} isActive={index === activeIndex} />
             </div>
@@ -55,6 +58,7 @@ const Carousel = () => {
         <button
           onClick={handleNext}
           className="bg-white/20 p-3 rounded-full text-white hover:bg-white/40 transition-colors"
+          disabled={activeIndex === realms.length - 1}
         >
           <FiChevronRight size={30} />
         </button>

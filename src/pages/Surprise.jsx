@@ -5,7 +5,8 @@ import backgroundVideo from "/assets/video1.mp4";
 
 const Surprise = () => {
   const { width, height } = useWindowSize();
-  const [candlesBlown, setCandlesBlown] = useState(false);
+  const [candlesLit, setCandlesLit] = useState(true);
+  const [showVideo, setShowVideo] = useState(false);
   const [micPermission, setMicPermission] = useState(null);
   const audioContextRef = useRef(null);
 
@@ -31,10 +32,12 @@ const Surprise = () => {
           const average = dataArray.reduce((a, b) => a + b) / bufferLength;
           if (average > 100) {
             // Threshold for detecting a blow
-            setCandlesBlown(true);
+            setCandlesLit(false);
+            setTimeout(() => setShowVideo(true), 1000); // Fade out cake, then show video
             stream.getTracks().forEach((track) => track.stop());
+          } else {
+            requestAnimationFrame(detectBlow);
           }
-          requestAnimationFrame(detectBlow);
         };
         detectBlow();
       } catch (err) {
@@ -66,10 +69,14 @@ const Surprise = () => {
         <h1 className="text-5xl font-bold mb-4 animate-bounce">
           Happy 23rd Birthday, BooBoo! 🎈
         </h1>
-        {!candlesBlown ? (
-          <div className="flex flex-col items-center">
+        {!showVideo && (
+          <div className="flex flex-col items-center transition-opacity duration-1000">
             <img
-              src="/assets/images/cake.png"
+              src={
+                candlesLit
+                  ? "/assets/images/cake-lit.png"
+                  : "/assets/images/cake.png"
+              }
               alt="Birthday Cake"
               className="w-64 h-64 mb-4"
             />
@@ -80,7 +87,8 @@ const Surprise = () => {
               </p>
             )}
           </div>
-        ) : (
+        )}
+        {showVideo && (
           <>
             <Confetti width={width} height={height} />
             <p className="text-2xl mb-8">

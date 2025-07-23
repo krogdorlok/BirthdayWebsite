@@ -45,7 +45,7 @@ export default function Home() {
         showCarousel={startCarousel}
       />
       {startCarousel && (
-        <div className="relative z-10 flex items-center justify-center h-full">
+        <div className="relative z-10 flex items-center justify-center h-full pt-32">
           <Carousel />
         </div>
       )}

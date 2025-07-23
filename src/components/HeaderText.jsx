@@ -20,7 +20,7 @@ export default function HeaderText({ onContinue, isFloating, showCarousel }) {
       <motion.h1
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{
-          opacity: showCarousel ? 0 : 1,
+          opacity: 1,
           scale: isFloating ? 0.8 : 1,
         }}
         transition={{ duration: 1.5 }}
