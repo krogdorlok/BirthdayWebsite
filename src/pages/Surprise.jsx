@@ -65,7 +65,7 @@ const Surprise = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center">
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center font-transcity">
         <h1 className="text-5xl font-bold mb-4 animate-bounce">
           Happy 23rd Birthday, BooBoo! 🎈
         </h1>
@@ -80,10 +80,10 @@ const Surprise = () => {
               alt="Birthday Cake"
               className="w-64 h-64 mb-4"
             />
-            <p className="text-2xl">Blow the candles</p>
+            <p className="text-4xl">Blow the candles!</p>
             {micPermission === false && (
-              <p className="text-red-500 mt-2">
-                Microphone access is needed to blow the candles.
+              <p className="text-pink-500 mt-5">
+                Ohhooo, mic access dedo bhai, then blow the candles, trust me!!
               </p>
             )}
           </div>

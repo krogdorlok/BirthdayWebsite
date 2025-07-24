@@ -13,8 +13,8 @@ export default function HeaderText({ onContinue, isFloating, showCarousel }) {
 
   return (
     <div
-      className={`absolute inset-0 flex flex-col items-center justify-center z-10 text-center text-white transition-all duration-1000 ${
-        isFloating ? "-translate-y-full" : "translate-y-0"
+      className={`absolute inset-0 flex flex-col items-center z-10 text-center text-white transition-all duration-1000 ${
+        isFloating ? "justify-start pt-8" : "justify-center"
       }`}
     >
       <motion.h1
@@ -24,8 +24,7 @@ export default function HeaderText({ onContinue, isFloating, showCarousel }) {
           scale: isFloating ? 0.8 : 1,
         }}
         transition={{ duration: 1.5 }}
-        className="text-5xl md:text-7xl font-bold"
-        style={{ fontFamily: "Lobster" }}
+        className="text-5xl md:text-7xl font-bold font-transcity"
       >
         BooBoo's 23 Phases 🎈
       </motion.h1>

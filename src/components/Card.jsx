@@ -55,8 +55,12 @@ const Card = ({ realm, isActive }) => {
             animate={{ opacity: showPhoto ? 1 : 0 }}
             transition={{ duration: 1 }}
           >
-            <h3 className="text-5xl font-bold mb-4">{realm.title}</h3>
-            <p className="text-2xl mb-4">{realm.caption || realm.message}</p>
+            <h3 className="text-5xl font-bold mb-4 font-transcity">
+              {realm.title}
+            </h3>
+            <p className="text-2xl mb-4 font-transcity">
+              {realm.caption || realm.message}
+            </p>
             {realm.audio && <audio ref={audioRef} src={realm.audio} controls />}
           </motion.div>
         </>

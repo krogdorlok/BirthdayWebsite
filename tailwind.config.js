@@ -5,6 +5,8 @@ export default {
     extend: {
       fontFamily: {
         lobster: ["Lobster", "cursive"],
+        angelos: ["Angelos", "sans-serif"],
+        transcity: ["Transcity", "sans-serif"],
       },
     },
   },

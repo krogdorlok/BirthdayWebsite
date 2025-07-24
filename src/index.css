@@ -3,6 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Transcity";
+  src: url("/assets/fonts/transcity/Transcity DEMO.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   font-family: "Lobster", cursive;
