@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
-import backgroundVideo from "/assets/video1.mp4";
+import backgroundVideo from "/assets/video_suprise.mp4";
 
 const Surprise = () => {
   const { width, height } = useWindowSize();
@@ -96,7 +96,7 @@ const Surprise = () => {
             </p>
             <div className="w-full max-w-2xl mx-auto bg-gray-800 rounded-lg shadow-lg p-4">
               <video
-                src="/assets/video1.mp4" // Placeholder for the final video
+                src="/assets/temp2_merged.mp4" // Placeholder for the final video
                 controls
                 autoPlay
                 className="w-full rounded"
